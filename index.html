@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Incredible India Explorer – Discover all 28 states and 8 Union Territories of India. Explore destinations, plan trips, experience culture, food, festivals and more." />
+  <meta name="keywords" content="India travel, Indian states, tourist destinations, Kerala, Rajasthan, Goa, Ladakh, travel guide" />
+  <meta property="og:title" content="Incredible India Explorer | Discover India, One Journey at a Time" />
+  <meta property="og:description" content="Your complete interactive guide to exploring every corner of India." />
+  <title>Incredible India Explorer | Discover India, One Journey at a Time</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" id="nav-logo-link">
+        <span class="logo-flag">🇮🇳</span>
+        <span class="logo-text">Incredible <strong>India</strong></span>
+      </a>
+      <ul class="nav-links" id="nav-links" role="menubar">
+        <li role="none"><a href="#map-section"    class="nav-link" role="menuitem">Explore Map</a></li>
+        <li role="none"><a href="#destinations"   class="nav-link" role="menuitem">Destinations</a></li>
+        <li role="none"><a href="#state-explorer" class="nav-link" role="menuitem">All States</a></li>
+        <li role="none"><a href="#trip-planner"   class="nav-link" role="menuitem">Plan Trip</a></li>
+        <li role="none"><a href="#festivals"      class="nav-link" role="menuitem">Festivals</a></li>
+        <li role="none"><a href="#my-india"       class="nav-link nav-cta" role="menuitem" id="nav-my-india">My India ❤️</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="dark-mode-toggle" class="dark-toggle" title="Toggle Dark Mode" aria-label="Toggle Dark Mode">
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+            <span class="sun-icon" aria-hidden="true">☀️</span>
+            <span class="moon-icon" aria-hidden="true">🌙</span>
+          </span>
+        </button>
+        <button id="hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="hero" class="hero" aria-label="Welcome to Incredible India Explorer">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-mandala mandala-1"></div>
+      <div class="hero-mandala mandala-2"></div>
+      <div class="hero-mandala mandala-3"></div>
+      <div class="hero-gradient-orb orb-1"></div>
+      <div class="hero-gradient-orb orb-2"></div>
+      <div class="hero-gradient-orb orb-3"></div>
+      <div class="hero-pattern"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        🌟 The World's Most Diverse Travel Experience
+      </div>
+      <h1 class="hero-title">
+        Discover India,<br />
+        <span class="gradient-text">One Journey at a Time.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Explore every state, uncover hidden places, experience local culture,<br class="hero-br" />
+        and plan your perfect Indian adventure.
+      </p>
+
+      <!-- Search -->
+      <div class="hero-search" role="search">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">🔍</span>
+          <input
+            type="search"
+            id="hero-search"
+            class="search-input"
+            placeholder="Search Kerala, Goa, Ladakh, Hampi, Varanasi…"
+            autocomplete="off"
+            aria-label="Search destinations"
+          />
+          <button class="search-btn" id="hero-search-btn" aria-label="Search">Explore</button>
+        </div>
+        <div id="search-suggestions" class="search-suggestions" role="listbox" aria-label="Search suggestions"></div>
+      </div>
+
+      <div class="hero-buttons">
+        <a href="#map-section"  class="btn btn-primary"   id="hero-btn-map">🗺️ Explore India</a>
+        <a href="#trip-planner" class="btn btn-secondary" id="hero-btn-plan">✈️ Plan My Journey</a>
+      </div>
+
+      <!-- Animated stats -->
+      <div class="hero-stats" aria-label="India at a glance">
+        <div class="stat-item">
+          <span class="stat-number" data-target="28" id="stat-states">0</span>
+          <span class="stat-label">States</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="8" id="stat-uts">0</span>
+          <span class="stat-label">Union Territories</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="1000" id="stat-dest">0</span>
+          <span class="stat-label">+ Destinations</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="100" id="stat-culture">0</span>
+          <span class="stat-label">+ Cultures</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <span>Scroll to Explore</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
+
+  <!-- ========== INTERACTIVE MAP ========== -->
+  <section id="map-section" class="section map-section" aria-labelledby="map-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Explorer</span>
+        <h2 class="section-title" id="map-heading">Explore India on the Map</h2>
+        <p class="section-subtitle">Click any state or Union Territory to discover its wonders.</p>
+      </div>
+      <div class="map-container">
+        <div class="map-wrapper">
+          <svg id="india-map" class="india-map-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" role="img" aria-label="Map of India showing states and union territories">
+  <title>India - States and Union Territories</title>
+  <desc>Political map of India with 28 states and 8 union territories. Based on open map data; for illustrative use only.</desc>
+
+  <!-- Background -->
+  <rect width="800" height="900" fill="#f5f5f5"/>
+
+  <!-- Simplified India outline + internal boundaries (placeholder paths) -->
+  <!-- Replace these paths with a detailed India map from the sources below for production use -->
+  <g fill="#e0e0e0" stroke="#999" stroke-width="1" class="state-paths">
+    <!-- Outer boundary (approximate) -->
+    <path class="state-path" d="M260,50 L320,40 L380,50 L420,80 L460,120 L480,180 L470,240 L440,300 L420,360 L410,420 L420,480 L440,540 L460,600 L450,660 L420,720 L380,760 L340,780 L300,790 L260,780 L220,760 L190,720 L170,660 L160,600 L150,540 L140,480 L130,420 L120,360 L110,300 L100,240 L110,180 L130,120 L160,80 L200,50 Z"/>
+
+    <!-- Example internal state separators (very abstract; replace with real boundaries) -->
+    <path class="state-path" d="M260,50 L260,790" fill="none" stroke="#bbb" stroke-dasharray="4,4"/>
+    <path class="state-path" d="M150,400 L450,400" fill="none" stroke="#bbb" stroke-dasharray="4,4"/>
+  </g>
+
+  <!-- Labels (positions are illustrative; adjust for a real map) -->
+  <g font-family="Arial, sans-serif" font-size="10" fill="#333" pointer-events="none">
+    <text x="220" y="120">Jammu &amp; Kashmir</text>
+    <text x="260" y="140">Himachal Pradesh</text>
+    <text x="300" y="160">Punjab</text>
+    <text x="330" y="180">Haryana</text>
+    <text x="360" y="200">Uttarakhand</text>
+    <text x="380" y="230">Uttar Pradesh</text>
+    <text x="320" y="260">Bihar</text>
+    <text x="360" y="280">Jharkhand</text>
+    <text x="380" y="310">West Bengal</text>
+    <text x="340" y="340">Odisha</text>
+    <text x="300" y="370">Chhattisgarh</text>
+    <text x="260" y="400">Madhya Pradesh</text>
+    <text x="220" y="440">Gujarat</text>
+    <text x="260" y="480">Maharashtra</text>
+    <text x="300" y="520">Goa</text>
+    <text x="340" y="560">Karnataka</text>
+    <text x="320" y="600">Kerala</text>
+    <text x="380" y="640">Tamil Nadu</text>
+    <text x="420" y="600">Andhra Pradesh</text>
+    <text x="440" y="560">Telangana</text>
+    <text x="460" y="520">Maharashtra (east)</text>
+    <text x="420" y="480">Madhya Pradesh (east)</text>
+    <text x="440" y="440">Uttar Pradesh (east)</text>
+    <text x="460" y="400">Bihar (east)</text>
+    <text x="480" y="360">West Bengal (north)</text>
+    <text x="500" y="320">Sikkim</text>
+    <text x="520" y="280">Arunachal Pradesh</text>
+    <text x="500" y="240">Assam</text>
+    <text x="480" y="200">Nagaland</text>
+    <text x="460" y="180">Manipur</text>
+    <text x="440" y="160">Mizoram</text>
+    <text x="420" y="140">Tripura</text>
+    <text x="400" y="120">Meghalaya</text>
+    <text x="260" y="820">Union Territories: Delhi, Puducherry, Chandigarh, J&amp;K, Ladakh, Andaman &amp; Nicobar, Lakshadweep, Dadra &amp; Nagar Haveli &amp; Daman &amp; Diu</text>
+  </g>
+</svg>
+          <div id="map-tooltip" class="map-tooltip" role="tooltip" aria-live="polite"></div>
+        </div>
+        <aside class="map-sidebar" aria-label="Map legend and state preview">
+          <div class="map-legend">
+            <h3 class="legend-title">Filter by Region</h3>
+            <div class="legend-items" id="legend-items">
+              <button class="legend-item active" data-region="all" aria-pressed="true">
+                <span class="legend-dot all"></span> All India
+              </button>
+              <button class="legend-item" data-region="north" aria-pressed="false">
+                <span class="legend-dot north"></span> North India
+              </button>
+              <button class="legend-item" data-region="south" aria-pressed="false">
+                <span class="legend-dot south"></span> South India
+              </button>
+              <button class="legend-item" data-region="east" aria-pressed="false">
+                <span class="legend-dot east"></span> East India
+              </button>
+              <button class="legend-item" data-region="west" aria-pressed="false">
+                <span class="legend-dot west"></span> West India
+              </button>
+              <button class="legend-item" data-region="central" aria-pressed="false">
+                <span class="legend-dot central"></span> Central India
+              </button>
+              <button class="legend-item" data-region="northeast" aria-pressed="false">
+                <span class="legend-dot northeast"></span> Northeast India
+              </button>
+              <button class="legend-item" data-region="ut" aria-pressed="false">
+                <span class="legend-dot ut"></span> Union Territories
+              </button>
+            </div>
+          </div>
+          <div id="map-state-preview" class="map-state-preview" aria-live="polite">
+            <div class="preview-hint">
+              <span class="preview-hint-icon">👆</span>
+              <p>Hover over a state to preview, click to explore fully.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPLORE BY EXPERIENCE ========== -->
+  <section id="experiences" class="section experiences-section" aria-labelledby="exp-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">What Are You Looking For?</span>
+        <h2 class="section-title" id="exp-heading">Explore by Experience</h2>
+        <p class="section-subtitle">Find destinations that match your travel personality.</p>
+      </div>
+      <div class="experience-grid" id="experience-grid" role="list" aria-label="Experience categories">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== POPULAR DESTINATIONS ========== -->
+  <section id="destinations" class="section destinations-section" aria-labelledby="dest-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Must-Visit Places</span>
+        <h2 class="section-title" id="dest-heading">Popular Destinations</h2>
+        <p class="section-subtitle">India's most beloved destinations, curated for your bucket list.</p>
+      </div>
+      <div class="filter-bar" id="destinations-filter" role="group" aria-label="Filter destinations by region">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="north">North</button>
+        <button class="filter-btn" data-filter="south">South</button>
+        <button class="filter-btn" data-filter="east">East</button>
+        <button class="filter-btn" data-filter="west">West</button>
+        <button class="filter-btn" data-filter="central">Central</button>
+        <button class="filter-btn" data-filter="northeast">Northeast</button>
+      </div>
+      <div class="destinations-grid" id="destinations-grid" role="list" aria-label="Destination cards">
+        <!-- Rendered by JavaScript -->
+      </div>
+      <div class="load-more-container">
+        <button id="load-more-btn" class="btn btn-outline" aria-label="Load more destinations">
+          Load More Destinations <span class="load-arrow">↓</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HIDDEN INDIA ========== -->
+  <section id="hidden-india" class="section hidden-india-section" aria-labelledby="hidden-heading">
+    <div class="hero-bg hidden-bg" aria-hidden="true">
+      <div class="hero-pattern"></div>
+    </div>
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Off the Beaten Path</span>
+        <h2 class="section-title" id="hidden-heading">The India You Haven't Discovered Yet</h2>
+        <p class="section-subtitle">Secret gems waiting to be explored by adventurous souls like you.</p>
+      </div>
+      <div class="hidden-grid" id="hidden-grid" role="list" aria-label="Hidden destinations">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== STATE EXPLORER ========== -->
+  <section id="state-explorer" class="section state-explorer-section" aria-labelledby="states-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">All 36 States &amp; Union Territories</span>
+        <h2 class="section-title" id="states-heading">Explore India State by State</h2>
+        <p class="section-subtitle">Every state has a story. What's yours?</p>
+      </div>
+      <div class="filter-bar" id="state-filters" role="group" aria-label="Filter states by region">
+        <button class="filter-btn active" data-region="all">All</button>
+        <button class="filter-btn" data-region="north">North</button>
+        <button class="filter-btn" data-region="south">South</button>
+        <button class="filter-btn" data-region="east">East</button>
+        <button class="filter-btn" data-region="west">West</button>
+        <button class="filter-btn" data-region="central">Central</button>
+        <button class="filter-btn" data-region="northeast">Northeast</button>
+        <button class="filter-btn" data-region="ut">Union Territories</button>
+      </div>
+      <div class="states-grid" id="states-grid" role="list" aria-label="State cards">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRIP PLANNER ========== -->
+  <section id="trip-planner" class="section trip-planner-section" aria-labelledby="planner-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Plan Your Perfect Journey</span>
+        <h2 class="section-title" id="planner-heading">Plan My India Trip</h2>
+        <p class="section-subtitle">Tell us your preferences — we'll craft your perfect itinerary.</p>
+      </div>
+      <div class="planner-container">
+        <div class="planner-form" id="planner-form" aria-label="Trip planning form">
+
+          <div class="planner-steps-header">
+            <div class="step-indicator active" id="step-ind-1">
+              <span class="step-num">1</span><span class="step-label-text">Destination</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-ind-2">
+              <span class="step-num">2</span><span class="step-label-text">Budget</span>
+            </div>
+            <div class="step-line"></div>
+            <div class="step-indicator" id="step-ind-3">
+              <span class="step-num">3</span><span class="step-label-text">Style</span>
+            </div>
+          </div>
+
+          <fieldset class="planner-step active" id="step-1">
+            <legend>Step 1: Choose Your Destination</legend>
+            <div class="form-group">
+              <label for="planner-destination" class="form-label">Where do you want to go?</label>
+              <input type="text" id="planner-destination" class="form-input"
+                     placeholder="e.g., Kerala, Rajasthan, Ladakh, Goa…" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="planner-days" class="form-label">How many days?</label>
+                <input type="number" id="planner-days" class="form-input" min="1" max="60" value="7" />
+              </div>
+              <div class="form-group">
+                <label for="planner-travelers" class="form-label">Number of travelers</label>
+                <input type="number" id="planner-travelers" class="form-input" min="1" max="50" value="2" />
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary planner-next" id="step1-next" onclick="plannerNext(1)">
+              Next: Choose Budget →
+            </button>
+          </fieldset>
+
+          <fieldset class="planner-step" id="step-2">
+            <legend>Step 2: Select Your Budget</legend>
+            <div class="budget-options" role="radiogroup" aria-label="Budget options">
+              <label class="budget-card">
+                <input type="radio" name="budget" value="budget" />
+                <span class="budget-icon">💰</span>
+                <span class="budget-range">₹5,000 – ₹10,000</span>
+                <span class="budget-label">Budget Explorer</span>
+              </label>
+              <label class="budget-card">
+                <input type="radio" name="budget" value="moderate" checked />
+                <span class="budget-icon">💳</span>
+                <span class="budget-range">₹10,000 – ₹25,000</span>
+                <span class="budget-label">Moderate Comfort</span>
+              </label>
+              <label class="budget-card">
+                <input type="radio" name="budget" value="premium" />
+                <span class="budget-icon">💎</span>
+                <span class="budget-range">₹25,000 – ₹50,000</span>
+                <span class="budget-label">Premium Traveler</span>
+              </label>
+              <label class="budget-card">
+                <input type="radio" name="budget" value="luxury" />
+                <span class="budget-icon">👑</span>
+                <span class="budget-range">₹50,000+</span>
+                <span class="budget-label">Luxury Seeker</span>
+              </label>
+            </div>
+            <div class="planner-nav">
+              <button type="button" class="btn btn-outline" onclick="plannerBack(2)">← Back</button>
+              <button type="button" class="btn btn-primary" id="step2-next" onclick="plannerNext(2)">Next: Travel Style →</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="planner-step" id="step-3">
+            <legend>Step 3: Choose Your Travel Style</legend>
+            <div class="style-options" id="style-options" role="radiogroup" aria-label="Travel style options">
+              <!-- Rendered by JavaScript -->
+            </div>
+            <div class="planner-nav">
+              <button type="button" class="btn btn-outline" onclick="plannerBack(3)">← Back</button>
+              <button type="button" class="btn btn-primary btn-large" id="generate-btn" onclick="generateItinerary()">
+                ✨ Generate My Journey
+              </button>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="planner-result" id="planner-result" aria-live="polite" aria-label="Generated itinerary">
+          <!-- Itinerary rendered by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TASTE INDIA – FOOD EXPLORER ========== -->
+  <section id="food-explorer" class="section food-section" aria-labelledby="food-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Regional Flavors</span>
+        <h2 class="section-title" id="food-heading">Taste India 🍛</h2>
+        <p class="section-subtitle">Every state has a flavor. Explore India through its cuisine.</p>
+      </div>
+      <div class="food-filter">
+        <label for="food-state-filter" class="form-label">Filter by State:</label>
+        <select id="food-state-filter" class="form-select" aria-label="Filter food by state">
+          <option value="all">All States</option>
+        </select>
+      </div>
+      <div class="food-grid" id="food-grid" role="list" aria-label="Regional foods">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FESTIVALS ========== -->
+  <section id="festivals" class="section festivals-section" aria-labelledby="festivals-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Celebrations of India</span>
+        <h2 class="section-title" id="festivals-heading">Festivals of India 🎉</h2>
+        <p class="section-subtitle">Experience India's vibrant festival spirit across all seasons.</p>
+      </div>
+      <div class="filter-bar festival-filter" id="festival-filters" role="group" aria-label="Filter festivals by season">
+        <button class="filter-btn active" data-season="all">All</button>
+        <button class="filter-btn" data-season="spring">Spring</button>
+        <button class="filter-btn" data-season="summer">Summer</button>
+        <button class="filter-btn" data-season="monsoon">Monsoon</button>
+        <button class="filter-btn" data-season="autumn">Autumn</button>
+        <button class="filter-btn" data-season="winter">Winter</button>
+      </div>
+      <div class="festivals-grid" id="festivals-grid" role="list" aria-label="Festival cards">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRAVEL TIPS ========== -->
+  <section id="travel-tips" class="section tips-section" aria-labelledby="tips-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Smart Traveler Guide</span>
+        <h2 class="section-title" id="tips-heading">Travel Tips for India</h2>
+        <p class="section-subtitle">Everything you need to know before your Indian adventure.</p>
+      </div>
+      <div class="tips-grid" id="tips-grid" role="list" aria-label="Travel tip cards">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MY INDIA – FAVORITES ========== -->
+  <section id="my-india" class="section my-india-section" aria-labelledby="my-india-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Your Personal Collection</span>
+        <h2 class="section-title" id="my-india-heading">My India ❤️</h2>
+        <p class="section-subtitle">Your personalized wishlist of favorite Indian destinations.</p>
+      </div>
+      <div id="favorites-container" class="favorites-container" aria-live="polite">
+        <!-- Rendered by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">🇮🇳 Incredible India Explorer</div>
+          <p class="footer-tagline">Your complete guide to discovering the world's most diverse and beautiful country — one journey at a time.</p>
+          <div class="footer-social" aria-label="Social media links">
+            <a href="#" class="social-link" aria-label="Facebook">📘</a>
+            <a href="#" class="social-link" aria-label="Instagram">📸</a>
+            <a href="#" class="social-link" aria-label="Twitter">🐦</a>
+            <a href="#" class="social-link" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+        <nav class="footer-col" aria-label="Explore links">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#map-section">Interactive Map</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#hidden-india">Hidden India</a></li>
+            <li><a href="#state-explorer">All States</a></li>
+            <li><a href="#experiences">By Experience</a></li>
+          </ul>
+        </nav>
+        <nav class="footer-col" aria-label="Plan links">
+          <h4>Plan</h4>
+          <ul>
+            <li><a href="#trip-planner">Trip Planner</a></li>
+            <li><a href="#food-explorer">Food Explorer</a></li>
+            <li><a href="#festivals">Festivals</a></li>
+            <li><a href="#travel-tips">Travel Tips</a></li>
+            <li><a href="#my-india">My India</a></li>
+          </ul>
+        </nav>
+        <div class="footer-col footer-newsletter">
+          <h4>Newsletter</h4>
+          <p>Get weekly travel inspiration from India's hidden corners.</p>
+          <div class="newsletter-form" role="form" aria-label="Newsletter signup">
+            <input type="email" id="newsletter-email" placeholder="Enter your email" class="form-input" aria-label="Email for newsletter" />
+            <button class="btn btn-primary btn-sm" id="newsletter-btn" onclick="subscribeNewsletter()">Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Incredible India Explorer. Made with ❤️ for the love of India.</p>
+        <p>Covering all 28 States + 8 Union Territories · 1000+ Destinations</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========== MODALS ========== -->
+
+  <!-- State Detail Modal -->
+  <div id="state-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="state-modal-title">
+    <div class="modal-overlay" id="state-modal-overlay"></div>
+    <div class="modal-content modal-large" role="document">
+      <button class="modal-close" id="state-modal-close" aria-label="Close state details">✕</button>
+      <div id="state-modal-body" aria-live="polite"><!-- Rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- Destination Detail Modal -->
+  <div id="destination-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="dest-modal-title">
+    <div class="modal-overlay" id="dest-modal-overlay"></div>
+    <div class="modal-content modal-large" role="document">
+      <button class="modal-close" id="dest-modal-close" aria-label="Close destination details">✕</button>
+      <div id="destination-modal-body" aria-live="polite"><!-- Rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- Travel Mood Modal -->
+  <div id="mood-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="mood-modal-title">
+    <div class="modal-overlay" id="mood-modal-overlay"></div>
+    <div class="modal-content modal-medium" role="document">
+      <button class="modal-close" id="mood-modal-close" aria-label="Close travel mood selector">✕</button>
+      <div id="mood-modal-body" aria-live="polite"><!-- Rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- Search Results Modal -->
+  <div id="search-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="search-results-title">
+    <div class="modal-overlay" id="search-modal-overlay"></div>
+    <div class="modal-content modal-medium" role="document">
+      <button class="modal-close" id="search-modal-close" aria-label="Close search results">✕</button>
+      <div id="search-modal-body" aria-live="polite"><!-- Rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- Experience / Category Filter Modal -->
+  <div id="category-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="category-modal-title">
+    <div class="modal-overlay" id="category-modal-overlay"></div>
+    <div class="modal-content modal-large" role="document">
+      <button class="modal-close" id="category-modal-close" aria-label="Close category results">✕</button>
+      <div id="category-modal-body" aria-live="polite"><!-- Rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- Tips Detail Modal -->
+  <div id="tips-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="tips-modal-title">
+    <div class="modal-overlay" id="tips-modal-overlay"></div>
+    <div class="modal-content modal-medium" role="document">
+      <button class="modal-close" id="tips-modal-close" aria-label="Close travel tip">✕</button>
+      <div id="tips-modal-body" aria-live="polite"><!-- Rendered by JS --></div>
+    </div>
+  </div>
+
+  <!-- ========== FLOATING ELEMENTS ========== -->
+
+  <!-- Travel Mood FAB -->
+  <button id="mood-fab" class="mood-fab" aria-label="What's Your Travel Mood?" title="What's Your Travel Mood?">
+    <span class="fab-icon" aria-hidden="true">✨</span>
+    <span class="fab-text">Travel Mood</span>
+  </button>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" class="back-to-top" aria-label="Scroll back to top" title="Back to top">↑</button>
+
+  <!-- Toast Notifications Container -->
+  <div id="toast-container" class="toast-container" role="alert" aria-live="polite"></div>
+
+  <!-- Main Script -->
+  <script src="script.js"></script>
+</body>
+</html>
+
